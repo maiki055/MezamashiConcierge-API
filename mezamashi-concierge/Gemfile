@@ -45,3 +45,5 @@ end
 
 gem 'grape'
 
+gem 'pry-rails'
+
