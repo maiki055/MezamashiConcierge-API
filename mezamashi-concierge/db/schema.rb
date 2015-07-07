@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707162125) do
+ActiveRecord::Schema.define(version: 20150707163153) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",          limit: 255,               null: false
+    t.integer  "prefecture_id", limit: 4
+    t.float    "longitude",     limit: 24,  default: 0.0
+    t.float    "latitude",      limit: 24,  default: 0.0
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "cities", ["prefecture_id"], name: "index_cities_on_prefecture_id", using: :btree
 
   create_table "prefectures", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
