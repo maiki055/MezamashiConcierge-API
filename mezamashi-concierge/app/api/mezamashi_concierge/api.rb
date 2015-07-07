@@ -19,6 +19,7 @@ module MezamashiConcierge
       desc 'Return a my alarm.'
       get :my_alarm do
         authenticate!
+        current_user
       end
     end
   end

@@ -1,7 +1,7 @@
 module MezamashiConcierge 
   module AuthenticateHelper
     def current_user
-      uuid = request.headers['X-UUID'].presence
+      uuid = request.headers['X-Auth-Token'].presence
       @current_user ||= User.find_by(uuid: uuid)
     end
 
