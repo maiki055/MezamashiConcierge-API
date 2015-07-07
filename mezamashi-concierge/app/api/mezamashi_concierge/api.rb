@@ -3,6 +3,16 @@ module MezamashiConcierge
     version 'v1', using: :path
     format :json
     prefix :api
+    rescue_from :all do |e|
+      error!("rescued from #{e}")
+    end
+
+    resource :users do
+      desc 'Sign up user.'
+      post :sign_up do
+        User.create!
+      end
+    end
 
     resource :alarms do
       desc 'Return a my alarm.'
