@@ -9,6 +9,8 @@ class PrefectureService
   def exec
     @scraping.page.search('.base_txt table a').each do |link|
       prefecture = Prefecture.where(name: link.inner_text).first_or_create
+      city_service = CityService.new(prefecture, link['href'])
+      city_service.exec
     end
   end
 end
