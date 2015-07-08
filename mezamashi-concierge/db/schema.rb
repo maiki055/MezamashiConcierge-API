@@ -39,18 +39,18 @@ ActiveRecord::Schema.define(version: 20150708100134) do
   create_table "weathers", force: :cascade do |t|
     t.string   "weather",       limit: 255
     t.string   "description",   limit: 255
-    t.float    "temp",          limit: 24,  default: 0.0
-    t.float    "temp_min",      limit: 24,  default: 0.0
-    t.float    "temp_max",      limit: 24,  default: 0.0
-    t.integer  "pressure",      limit: 4,   default: 0
-    t.integer  "humidity",      limit: 4,   default: 0
-    t.float    "wind_speed",    limit: 24,  default: 0.0
-    t.integer  "wind_deg",      limit: 4,   default: 0
-    t.float    "rain_volume",   limit: 24,  default: 0.0
-    t.integer  "rain_hour",     limit: 4,   default: 0
-    t.float    "snow_volume",   limit: 24,  default: 0.0
-    t.integer  "snow_hour",     limit: 4,   default: 0
-    t.integer  "cloudiness",    limit: 4,   default: 0
+    t.float    "temp",          limit: 24,  default: 0.0, null: false
+    t.float    "temp_min",      limit: 24,  default: 0.0, null: false
+    t.float    "temp_max",      limit: 24,  default: 0.0, null: false
+    t.integer  "pressure",      limit: 4,   default: 0,   null: false
+    t.integer  "humidity",      limit: 4,   default: 0,   null: false
+    t.float    "wind_speed",    limit: 24,  default: 0.0, null: false
+    t.integer  "wind_deg",      limit: 4,   default: 0,   null: false
+    t.float    "rain_volume",   limit: 24,  default: 0.0, null: false
+    t.integer  "rain_hour",     limit: 4,   default: 0,   null: false
+    t.float    "snow_volume",   limit: 24,  default: 0.0, null: false
+    t.integer  "snow_hour",     limit: 4,   default: 0,   null: false
+    t.integer  "cloudiness",    limit: 4,   default: 0,   null: false
     t.datetime "calculated_at"
     t.integer  "city_id",       limit: 4
     t.datetime "created_at",                              null: false
