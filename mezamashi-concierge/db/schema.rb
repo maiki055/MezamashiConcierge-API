@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707163153) do
+ActiveRecord::Schema.define(version: 20150708100134) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",          limit: 255,               null: false
@@ -35,5 +35,28 @@ ActiveRecord::Schema.define(version: 20150707163153) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "weathers", force: :cascade do |t|
+    t.string   "weather",       limit: 255
+    t.string   "description",   limit: 255
+    t.float    "temp",          limit: 24,  default: 0.0
+    t.float    "temp_min",      limit: 24,  default: 0.0
+    t.float    "temp_max",      limit: 24,  default: 0.0
+    t.integer  "pressure",      limit: 4,   default: 0
+    t.integer  "humidity",      limit: 4,   default: 0
+    t.float    "wind_speed",    limit: 24,  default: 0.0
+    t.integer  "wind_deg",      limit: 4,   default: 0
+    t.float    "rain_volume",   limit: 24,  default: 0.0
+    t.integer  "rain_hour",     limit: 4,   default: 0
+    t.float    "snow_volume",   limit: 24,  default: 0.0
+    t.integer  "snow_hour",     limit: 4,   default: 0
+    t.integer  "cloudiness",    limit: 4,   default: 0
+    t.datetime "calculated_at"
+    t.integer  "city_id",       limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "weathers", ["city_id"], name: "index_weathers_on_city_id", using: :btree
 
 end
