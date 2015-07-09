@@ -4,6 +4,6 @@ module RailroadStatus
   included do
     validates :status, presence: true
 
-    enum status: { created: 0, draft: 1, published: 2 }
+    enum status: { usually: 0, delay: 1, stop: 2 }
   end
 end
