@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20150709120622) do
     t.string   "name",                limit: 255
     t.string   "state",               limit: 255
     t.string   "state_detail",        limit: 255
-    t.integer  "status",              limit: 4
+    t.integer  "status",              limit: 4,   default: 0
     t.integer  "railroad_company_id", limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "railroads", ["railroad_company_id"], name: "index_railroads_on_railroad_company_id", using: :btree
