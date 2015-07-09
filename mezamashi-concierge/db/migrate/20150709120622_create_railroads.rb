@@ -4,7 +4,7 @@ class CreateRailroads < ActiveRecord::Migration
       t.string :name
       t.string :state
       t.string :state_detail
-      t.integer :status
+      t.integer :status, default: 0
       t.references :railroad_company, index: true
 
       t.timestamps null: false
