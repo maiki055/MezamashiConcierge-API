@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709120622) do
+ActiveRecord::Schema.define(version: 20150709132314) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "areas_railroad_companies", force: :cascade do |t|
+    t.integer  "area_id",             limit: 4
+    t.integer  "railroad_company_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "areas_railroad_companies", ["area_id"], name: "index_areas_railroad_companies_on_area_id", using: :btree
+  add_index "areas_railroad_companies", ["railroad_company_id"], name: "index_areas_railroad_companies_on_railroad_company_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",          limit: 255,               null: false
