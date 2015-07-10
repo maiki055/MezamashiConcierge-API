@@ -37,6 +37,7 @@ group :development, :test do
 end
 
 gem 'grape'
+gem 'grape-jbuilder'
 
 gem 'pry-rails'
 

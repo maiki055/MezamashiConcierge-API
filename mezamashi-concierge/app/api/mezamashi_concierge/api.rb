@@ -2,6 +2,7 @@ module MezamashiConcierge
   class API < Grape::API
     version 'v1', using: :path
     format :json
+    formatter :json, Grape::Formatter::Jbuilder
     prefix :api
     rescue_from :all do |e|
       error!("rescued from #{e}")
@@ -20,6 +21,13 @@ module MezamashiConcierge
       get :my_alarm do
         authenticate!
         current_user
+      end
+    end
+
+    resource :areas do
+      desc 'Return areas'
+      get '', jbuilder: 'areas/index.json.jbuilder' do
+        @areas = Area.includes(railroad_companies: :railroads).all
       end
     end
   end
