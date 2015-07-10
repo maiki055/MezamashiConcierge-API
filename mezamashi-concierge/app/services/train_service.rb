@@ -19,6 +19,7 @@ class TrainService
     @scraping.load_page(url)
     @scraping.page.search('#mdAreaMajorLine .labelSmall').each do |label_small|
       railroad_company = RailroadCompany.where(name: label_small.inner_text.strip).first_or_create
+      AreasRailroadCompany.where(area_id: area.id, railroad_company_id: railroad_company.id).first_or_create
       label_small.next_element.search('tr a').each do |train_a|
         railroad = Railroad.where(name: train_a.inner_text).first_or_initialize do |r|
           r.railroad_company = railroad_company
