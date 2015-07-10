@@ -41,6 +41,3 @@ gem 'grape'
 gem 'pry-rails'
 
 gem 'mechanize'
-
-gem 'rabl'
-
