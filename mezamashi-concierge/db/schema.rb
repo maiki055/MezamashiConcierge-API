@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709132314) do
+ActiveRecord::Schema.define(version: 20150710083517) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -68,10 +68,13 @@ ActiveRecord::Schema.define(version: 20150709132314) do
   add_index "railroads", ["railroad_company_id"], name: "index_railroads_on_railroad_company_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "uuid",       limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "uuid",        limit: 255, null: false
+    t.integer  "railroad_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
+
+  add_index "users", ["railroad_id"], name: "index_users_on_railroad_id", using: :btree
 
   create_table "weathers", force: :cascade do |t|
     t.string   "weather",       limit: 255
@@ -97,4 +100,5 @@ ActiveRecord::Schema.define(version: 20150709132314) do
   add_index "weathers", ["city_id"], name: "index_weathers_on_city_id", using: :btree
 
   add_foreign_key "prefectures", "areas"
+  add_foreign_key "users", "railroads"
 end
