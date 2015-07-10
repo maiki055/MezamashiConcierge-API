@@ -1,3 +1,4 @@
 class Prefecture < ActiveRecord::Base
-  has_many :cites
+  belongs_to :area
+  has_many :cities
 end
