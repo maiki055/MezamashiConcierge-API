@@ -14,6 +14,15 @@ module MezamashiConcierge
       post :sign_up do
         User.create!
       end
+
+      desc 'Register using railroad.'
+      params do
+        requires :railroad_id, type: Integer, desc: "Railroad id."
+      end
+      patch :railroad do
+        authenticate!
+        current_user.update(railroad_id: params[:railroad_id])
+      end
     end
 
     resource :alarms do
@@ -25,7 +34,7 @@ module MezamashiConcierge
     end
 
     resource :areas do
-      desc 'Return areas'
+      desc 'Return areas.'
       get '', jbuilder: 'areas/index.json.jbuilder' do
         @areas = Area.includes(railroad_companies: :railroads).all
       end
