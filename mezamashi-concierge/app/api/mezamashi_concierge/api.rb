@@ -36,7 +36,7 @@ module MezamashiConcierge
     resource :areas do
       desc 'Return areas.'
       get '', jbuilder: 'areas/index.json.jbuilder' do
-        @areas = Area.includes(railroad_companies: :railroads).all
+        @areas = Area.includes(prefectures: :cities, railroad_companies: :railroads).all
       end
     end
   end
