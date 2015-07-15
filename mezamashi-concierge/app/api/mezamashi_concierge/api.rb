@@ -23,6 +23,15 @@ module MezamashiConcierge
         authenticate!
         current_user.update(railroad_id: params[:railroad_id])
       end
+
+      desc 'Register living city.'
+      params do
+        requires :city_id, type: Integer, desc: "City id."
+      end
+      patch :city do
+        authenticate!
+        current_user.update(city_id: params[:city_id])
+      end
     end
 
     resource :alarms do
